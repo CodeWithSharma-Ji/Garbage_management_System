@@ -1,0 +1,177 @@
+/* ============================================
+   ECO MANAGEMENT SYSTEM - MAIN STYLESHEET
+   Color Scheme: Green, White, Light Blue
+   ============================================ */
+
+/* ===== ROOT & GLOBAL STYLES ===== */
+:root {
+    /* Light Theme Colors */
+    --primary-green: #27ae60;
+    --dark-green: #1e8449;
+    --light-blue: #d6eaf8;
+    --light-green: #d5f4e6;
+    --white: #ffffff;
+    --dark-gray: #333333;
+    --light-gray: #f5f5f5;
+    --border-color: #bdc3c7;
+    --text-color: #333333;
+    --bg-color: #ffffff;
+    --card-bg: #ffffff;
+    --navbar-bg: #068c3e;
+    --section-bg: #f5f5f5;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --primary-green: #2ecc71;
+    --dark-green: #27ae60;
+    --text-color: #e0e0e0;
+    --bg-color: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --navbar-bg: #0d3d1a;
+    --section-bg: #242424;
+    --border-color: #444444;
+    --dark-gray: #e0e0e0;
+    --light-gray: #2d2d2d;
+}
+
+html.dark-theme {
+    color-scheme: dark;
+}
+
+html.dark-theme body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark-green);
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+/* ===== NAVBAR STYLES ===== */
+.navbar {
+    background-color: var(--navbar-bg);
+    padding: 0.5rem 1rem;
+}
+
+.navbar-container {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-brand {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.navbar-brand::before {
+    content: "♻️";
+    font-size: 2rem;
+}
+
+.navbar-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.theme-toggle, .language-select {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover, .language-select:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--white);
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.nav-links a.active {
+    padding-bottom: 0.3rem;
+    border-bottom: 3px solid var(--white);
+}
+.Login-btn {
+    background-color: var(--primary-green);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
