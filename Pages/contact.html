@@ -26,6 +26,326 @@
         </div>
     </nav>
 
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="content">
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Contact Us</h1>
+                <p>Have questions or need support? Our team is here to help 24/7.</p>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section class="section">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 class="section-title" style="text-align: left;">Send us a Message</h2>
+                        
+                        <div class="form-section">
+                            <!-- Success Message -->
+                            <div id="contact-form"></div>
+
+                            <form id="contactForm">
+                                <!-- Name Field -->
+                                <div class="form-group">
+                                    <label for="contactName">Full Name *</label>
+                                    <input 
+                                        type="text" 
+                                        id="contactName" 
+                                        name="contactName"
+                                        placeholder="Your name"
+                                        required
+                                    >
+                                    <span class="error"></span>
+                                </div>
+
+                                <!-- Email Field -->
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address *</label>
+                                    <input 
+                                        type="email" 
+                                        id="contactEmail" 
+                                        name="contactEmail"
+                                        placeholder="your.email@example.com"
+                                        required
+                                    >
+                                    <span class="error"></span>
+                                </div>
+
+                                <!-- Phone Field (Optional) -->
+                                <div class="form-group">
+                                    <label for="contactPhone">Phone Number (Optional)</label>
+                                    <input 
+                                        type="tel" 
+                                        id="contactPhone" 
+                                        name="contactPhone"
+                                        placeholder="Your contact number"
+                                    >
+                                    <span class="error"></span>
+                                </div>
+
+                                <!-- Subject Field -->
+                                <div class="form-group">
+                                    <label for="contactSubject">Subject (Optional)</label>
+                                    <input 
+                                        type="text" 
+                                        id="contactSubject" 
+                                        name="contactSubject"
+                                        placeholder="Brief subject of your inquiry"
+                                    >
+                                    <span class="error"></span>
+                                </div>
+
+                                <!-- Message Field -->
+                                <div class="form-group">
+                                    <label for="contactMessage">Message *</label>
+                                    <textarea 
+                                        id="contactMessage" 
+                                        name="contactMessage"
+                                        placeholder="Please provide details about your query, feedback, or concern."
+                                        required
+                                    ></textarea>
+                                    <span class="error"></span>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                    📧 Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div>
+                        <h2 class="section-title" style="text-align: left;">Get in Touch</h2>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- Helpline Info -->
+                            <div class="info-box">
+                                <h4>☎️ Helpline</h4>
+                                <p><strong>24/7 Support:</strong> <span style="color: var(--primary-green); font-size: 1.1rem;">1800-ECO-MGMT</span></p>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Available all days including weekends and holidays</p>
+                            </div>
+
+                            <!-- Email Info -->
+                            <div class="info-box">
+                                <h4>📧 Email</h4>
+                                <p><strong>Support:</strong> support@ecomgmt.com</p>
+                                <p><strong>Complaints:</strong> complaints@ecomgmt.com</p>
+                                <p><strong>Feedback:</strong> feedback@ecomgmt.com</p>
+                            </div>
+
+                            <!-- Office Hours -->
+                            <div class="info-box">
+                                <h4>🏢 Office Hours</h4>
+                                <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
+                                <p><strong>Saturday:</strong> 10:00 AM - 4:00 PM</p>
+                                <p><strong>Sunday & Holidays:</strong> Emergency support only</p>
+                            </div>
+
+                            <!-- Address Info -->
+                            <div class="info-box">
+                                <h4>📍 Head Office</h4>
+                                <p>Eco Management System<br>
+                                Sustainable City Center<br>
+                                123 Green Avenue<br>
+                                Metro City, ST 12345</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CITY HELPLINES ===== -->
+        <section class="section" style="background-color: var(--light-green);">
+            <div class="container">
+                <h2 class="section-title">City Help-Lines</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                    Quick contact information for different cities and regions
+                </p>
+                
+                <div class="cards-grid">
+                    <!-- City 1 -->
+                    <div class="card">
+                        <div class="card-icon">🏙️</div>
+                        <h3>Metropolitan City</h3>
+                        <p><strong>Helpline:</strong> 1800-001-2345</p>
+                        <p><strong>Email:</strong> metro@ecomgmt.com</p>
+                        <p><strong>Address:</strong> Central Business District<br>Metropolitan City, ST 12345</p>
+                    </div>
+
+                    <!-- City 2 -->
+                    <div class="card">
+                        <div class="card-icon">🏙️</div>
+                        <h3>Suburban Hub</h3>
+                        <p><strong>Helpline:</strong> 1800-002-3456</p>
+                        <p><strong>Email:</strong> suburban@ecomgmt.com</p>
+                        <p><strong>Address:</strong> Tech Park Area<br>Suburban Hub, ST 54321</p>
+                    </div>
+
+                    <!-- City 3 -->
+                    <div class="card">
+                        <div class="card-icon">🏙️</div>
+                        <h3>Riverside District</h3>
+                        <p><strong>Helpline:</strong> 1800-003-4567</p>
+                        <p><strong>Email:</strong> riverside@ecomgmt.com</p>
+                        <p><strong>Address:</strong> Commercial Hub<br>Riverside District, ST 67890</p>
+                    </div>
+
+                    <!-- City 4 -->
+                    <div class="card">
+                        <div class="card-icon">🏙️</div>
+                        <h3>North Valley</h3>
+                        <p><strong>Helpline:</strong> 1800-004-5678</p>
+                        <p><strong>Email:</strong> valley@ecomgmt.com</p>
+                        <p><strong>Address:</strong> Eco Park Rd<br>North Valley, ST 98765</p>
+                    </div>
+
+                    <!-- City 5 -->
+                    <div class="card">
+                        <div class="card-icon">🏙️</div>
+                        <h3>East Expansion</h3>
+                        <p><strong>Helpline:</strong> 1800-005-6789</p>
+                        <p><strong>Email:</strong> east@ecomgmt.com</p>
+                        <p><strong>Address:</strong> New Business Zone<br>East Expansion, ST 11223</p>
+                    </div>
+
+                    <!-- City 6 -->
+                    <div class="card">
+                        <div class="card-icon">🏙️</div>
+                        <h3>West Plains</h3>
+                        <p><strong>Helpline:</strong> 1800-006-7890</p>
+                        <p><strong>Email:</strong> west@ecomgmt.com</p>
+                        <p><strong>Address:</strong> Green Valley Road<br>West Plains, ST 33445</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT METHODS ===== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">How to Reach Us</h2>
+                
+                <div class="info-section">
+                    <div class="info-box">
+                        <h4>📞 Phone Support</h4>
+                        <p>Call our toll-free helpline 1800-ECO-MGMT for immediate assistance. 
+                        Our support team will help with bookings, complaints, and general inquiries.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>💬 Live Chat</h4>
+                        <p>Available on our website during office hours. Get instant responses to your 
+                        questions from our support representatives.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📝 Contact Form</h4>
+                        <p>Fill out the contact form on this page. We guarantee response within 24 hours 
+                        for all inquiries and feedback.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📱 Mobile App</h4>
+                        <p>Download our mobile app for quick access to all services, real-time tracking, 
+                        and in-app customer support.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🌐 Social Media</h4>
+                        <p>Follow us on Facebook, Twitter, and Instagram @EcoMgmtSystem for updates, 
+                        tips, and customer interactions.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📧 Email</h4>
+                        <p>Send detailed inquiries to our support email. For complaints, use our dedicated 
+                        complaint email address for faster resolution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <section class="section" style="background-color: var(--light-blue);">
+            <div class="container">
+                <h2 class="section-title">Common Questions</h2>
+                
+                <div class="info-section">
+                    <div class="info-box">
+                        <h4>How quickly will I get a response?</h4>
+                        <p>Phone inquiries are attended immediately during office hours. Email responses 
+                        and contact form submissions are addressed within 24 hours of receipt.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>What if I need emergency support?</h4>
+                        <p>Call our 24/7 helpline for emergency situations. Sanitation crew is available 
+                        24/7 for urgent garbage collection and cleanup needs.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Can I lodge a complaint?</h4>
+                        <p>Yes! Use our dedicated complaint email (complaints@ecomgmt.com) or call the 
+                        helpline. We investigate and resolve issues within 48 hours.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Is there a complaint resolution timeline?</h4>
+                        <p>We commit to resolving 95% of complaints within 48 hours. Complex issues may 
+                        take up to 5 business days. We'll keep you updated throughout.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Do you have a grievance redressal officer?</h4>
+                        <p>Yes. For unresolved grievances, contact our Grievance Officer at 
+                        grievance@ecomgmt.com or through the main helpline.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>How can I provide feedback?</h4>
+                        <p>We value your feedback! Send suggestions to feedback@ecomgmt.com or use the 
+                        feedback option in your account after each service.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LOCATION MAP PLACEHOLDER ===== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Find Our Locations</h2>
+                
+                <div style="background: var(--light-gray); border-radius: 8px; padding: 3rem; text-align: center; border: 2px dashed var(--primary-green);">
+                    <div class="card-icon" style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                    <p style="font-size: 1.1rem; color: var(--dark-gray);">
+                        Interactive map would display here<br>
+                        <span style="font-size: 0.9rem;">Visit our website for real-time location tracking of nearby garbage collection vehicles</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA SECTION ===== -->
+        <section class="section" style="background-color: var(--primary-green); color: var(--white);">
+            <div class="container text-center">
+                <h2 style="color: var(--white); margin-bottom: 1rem;">Still Have Questions?</h2>
+                <p style="color: var(--white); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Reach out to us through any of the channels above. We're here to help!
+                </p>
+                
+                <a href="tel:1800-ECO-MGMT" class="btn btn-secondary" style="margin-right: 1rem;">Call Us Now</a>
+                <a href="#contactForm" class="btn btn-light">Send Message</a>
+            </div>
+        </section>
+    </div>
+
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">

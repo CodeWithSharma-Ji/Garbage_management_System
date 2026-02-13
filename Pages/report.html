@@ -26,6 +26,207 @@
         </div>
     </nav>
 
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="content">
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Report Garbage</h1>
+                <p>Help us keep your area clean. Report garbage or overflowing bins and we'll respond immediately.</p>
+            </div>
+        </section>
+
+        <!-- ===== REPORT FORM SECTION ===== -->
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <h2 class="section-title">Submit a Garbage Report</h2>
+                    
+                    <div class="form-section">
+                        <!-- Success Message -->
+                        <div id="report-form"></div>
+
+                        <form id="reportGarbageForm">
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="reportName">Your Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="reportName" 
+                                    name="reportName"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Location Field -->
+                            <div class="form-group">
+                                <label for="reportLocation">Area / Location *</label>
+                                <input 
+                                    type="text" 
+                                    id="reportLocation" 
+                                    name="reportLocation"
+                                    placeholder="e.g., Main Street, Ward 5"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Garbage Level Field -->
+                            <div class="form-group">
+                                <label for="garbageLevel">Garbage Level *</label>
+                                <select id="garbageLevel" name="garbageLevel" required>
+                                    <option value="">-- Select Garbage Level --</option>
+                                    <option value="low">Low (Garbage scattered, manageable)</option>
+                                    <option value="medium">Medium (Bins overflowing, concerns)</option>
+                                    <option value="high">High (Emergency, health hazard)</option>
+                                </select>
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Message Field -->
+                            <div class="form-group">
+                                <label for="reportMessage">Additional Message (Optional)</label>
+                                <textarea 
+                                    id="reportMessage" 
+                                    name="reportMessage"
+                                    placeholder="Provide more details about the garbage situation... (e.g., specific items, location description, photos, etc.)"
+                                ></textarea>
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                🚚 Submit Garbage Report
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="info-section" style="margin-top: 3rem;">
+                        <div class="info-box">
+                            <h4>📍 Location</h4>
+                            <p>Please provide your area or street name. We use this to locate the nearest 
+                            garbage collection vehicle and respond quickly.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>📊 Garbage Level</h4>
+                            <p>Select the urgency level. High-level reports are prioritized for immediate 
+                            response to prevent health hazards.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>⏱️ Response Time</h4>
+                            <p>After submission, a cleanup crew will be dispatched to your location. 
+                            Expected arrival: 30-45 minutes for routine, 15-20 minutes for emergencies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <section class="section" style="background-color: var(--light-green);">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                
+                <div class="info-section">
+                    <div class="info-box">
+                        <h4>When will the garbage be collected?</h4>
+                        <p>Our team typically arrives within 30-45 minutes for regular reports and 15-20 
+                        minutes for high-priority emergency reports. Response time depends on vehicle availability 
+                        in your area.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Do I need to be present?</h4>
+                        <p>For door-to-door collections, it's helpful if you're available. For street garbage 
+                        reports, you don't need to wait. Our team will handle cleanup once they arrive.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Can I track the garbage vehicle?</h4>
+                        <p>Yes! After submission, you'll receive tracking information via our system. 
+                        You can monitor the vehicle's location in real-time until it reaches your area.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>What if I have multiple problem areas?</h4>
+                        <p>Submit separate reports for each location. This helps us prioritize and assign 
+                        the appropriate resources to each area effectively.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Is this service free?</h4>
+                        <p>Yes! Reporting garbage in your area is completely free for all citizens. 
+                        It's our commitment to maintaining clean, healthy neighborhoods for everyone.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>What should I do in case of an emergency?</h4>
+                        <p>Select "High" garbage level for emergencies. For urgent situations like 
+                        hazardous materials, also call our 24/7 helpline for immediate assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GUIDELINES SECTION ===== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Reporting Guidelines</h2>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="color: var(--primary-green); margin-top: 2rem;">What Should You Report?</h3>
+                    <ul style="margin: 1rem 0 2rem 2rem; line-height: 1.8;">
+                        <li>Overflowing garbage bins or containers</li>
+                        <li>Garbage scattered on streets or public areas</li>
+                        <li>Illegal dumping of waste</li>
+                        <li>Foul odors indicating decomposing garbage</li>
+                        <li>Damaged or broken garbage collection containers</li>
+                        <li>Hazardous waste or suspicious materials</li>
+                        <li>Any cleanliness or sanitation concerns in your area</li>
+                    </ul>
+
+                    <h3 style="color: var(--primary-green); margin-top: 2rem;">How to Help Us Help You Better?</h3>
+                    <ul style="margin: 1rem 0 2rem 2rem; line-height: 1.8;">
+                        <li>Provide accurate location information</li>
+                        <li>Be specific about the type and volume of garbage</li>
+                        <li>Mention any special hazards or concerns</li>
+                        <li>Describe landmarks nearby if the location is hard to find</li>
+                        <li>Include your contact number for follow-up if needed</li>
+                        <li>Provide feedback after service for continuous improvement</li>
+                    </ul>
+
+                    <h3 style="color: var(--primary-green); margin-top: 2rem;">Important Notes</h3>
+                    <ul style="margin: 1rem 0 2rem 2rem; line-height: 1.8;">
+                        <li>Please don't attempt to handle hazardous or unknown waste materials</li>
+                        <li>Do not block access to reported garbage areas for the collection team</li>
+                        <li>Provide factual information to help us prioritize resources effectively</li>
+                        <li>Multiple reports from the same area are compiled for efficient routing</li>
+                        <li>Your privacy is protected - personal details are used only for service delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA SECTION ===== -->
+        <section class="section" style="background-color: var(--light-blue);">
+            <div class="container text-center">
+                <h2 class="section-title">Report Garbage Today</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                    Help maintain the cleanliness of your community. Report any garbage issues and contribute 
+                    to a healthier, cleaner environment for everyone.
+                </p>
+                
+                <a href="#reportGarbageForm" class="btn btn-primary">Report Now</a>
+                <a href="services.html" class="btn btn-secondary" style="margin-left: 1rem;">View All Services</a>
+            </div>
+        </section>
+    </div>
+
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
