@@ -25,7 +25,168 @@
             </div>
         </div>
     </nav>
-    
+
+    <!-- ===== AUTH CONTAINER ===== -->
+    <div class="auth-container">
+        <div class="book-container auth-wrapper" id="authWrapper">
+            <!-- LEFT PANEL - LOGIN BY DEFAULT -->
+            <div class="auth-panel auth-left-panel book-left-page" id="loginPanel">
+                <h2>Welcome Back!</h2>
+                <p>Sign in to your account to book garbage collection, buy fertilizer, and manage your eco journey.</p>
+                <button class="auth-toggle-btn" onclick="switchToSignup()">Create Account</button>
+            </div>
+
+            <!-- RIGHT PANEL - SIGNUP BY DEFAULT -->
+            <div class="auth-panel auth-right-panel book-right-page" id="signupPanel">
+                <h2>New Here?</h2>
+                <p>Join our community and start your sustainable journey with us today!</p>
+                <button class="auth-toggle-btn" onclick="switchToLogin()">Sign In</button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <div class="auth-panel book-right-page" id="loginForm">
+                <form class="auth-form" onsubmit="handleLogin(event)">
+                    <h3>Sign In</h3>
+                    <p>Welcome to Eco Management System</p>
+
+                    <div id="loginMessage"></div>
+
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address *</label>
+                        <input 
+                            type="email" 
+                            id="loginEmail" 
+                            name="loginEmail"
+                            placeholder="your@email.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password *</label>
+                        <input 
+                            type="password" 
+                            id="loginPassword" 
+                            name="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <label for="rememberMe" style="margin-bottom: 0;">Remember me</label>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn">Sign In</button>
+
+                    <div class="auth-link">
+                        <p>Don't have an account? <a href="#" onclick="switchToSignup(); return false;">Sign Up</a></p>
+                        <p><a href="#">Forgot Password?</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SIGNUP FORM -->
+            <div class="auth-panel book-right-page" id="signupForm" style="display: none;">
+                <form class="auth-form" onsubmit="handleSignup(event)">
+                    <h3>Create Account</h3>
+                    <p>Join our eco community today</p>
+
+                    <div id="signupMessage"></div>
+
+                    <div class="form-group">
+                        <label for="signupName">Full Name *</label>
+                        <input 
+                            type="text" 
+                            id="signupName" 
+                            name="signupName"
+                            placeholder="Your full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address *</label>
+                        <input 
+                            type="email" 
+                            id="signupEmail" 
+                            name="signupEmail"
+                            placeholder="your@email.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupPhone">Phone Number *</label>
+                        <input 
+                            type="tel" 
+                            id="signupPhone" 
+                            name="signupPhone"
+                            placeholder="+91 98765 43210"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupAddress">Address *</label>
+                        <input 
+                            type="text" 
+                            id="signupAddress" 
+                            name="signupAddress"
+                            placeholder="123 Main Street, City"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupPassword">Password *</label>
+                        <input 
+                            type="password" 
+                            id="signupPassword" 
+                            name="signupPassword"
+                            placeholder="Create a strong password"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password *</label>
+                        <input 
+                            type="password" 
+                            id="signupConfirmPassword" 
+                            name="signupConfirmPassword"
+                            placeholder="Confirm your password"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupUserType">Account Type *</label>
+                        <select id="signupUserType" name="signupUserType" required>
+                            <option value="">-- Select Account Type --</option>
+                            <option value="household">Household User</option>
+                            <option value="business">Business/Commercial</option>
+                            <option value="farmer">Farmer</option>
+                            <option value="seller">Fertilizer Seller</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                        <label for="agreeTerms" style="margin-bottom: 0;">I agree to <a href="#" style="color: var(--primary-green);">Terms & Conditions</a></label>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn">Create Account</button>
+
+                    <div class="auth-link">
+                        <p>Already have an account? <a href="#" onclick="switchToLogin(); return false;">Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
@@ -52,5 +213,187 @@
 
     <!-- ===== SCRIPTS ===== -->
     <script src="../JavaScript/script.js"></script>
+    <script>
+        // Initialize - Show login form by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showLoginForm();
+            initializeTheme();
+            setupThemeToggle();
+        });
+
+        // Switch to signup form
+        function switchToSignup() {
+            const loginPanel = document.getElementById('loginPanel');
+            const signupPanel = document.getElementById('signupPanel');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            loginPanel.style.display = 'none';
+            signupPanel.style.display = 'flex';
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'flex';
+        }
+
+        // Switch to login form
+        function switchToLogin() {
+            const loginPanel = document.getElementById('loginPanel');
+            const signupPanel = document.getElementById('signupPanel');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            loginPanel.style.display = 'flex';
+            signupPanel.style.display = 'none';
+            loginForm.style.display = 'flex';
+            signupForm.style.display = 'none';
+        }
+
+        // Show login form by default
+        function showLoginForm() {
+            const loginPanel = document.getElementById('loginPanel');
+            const signupPanel = document.getElementById('signupPanel');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            loginPanel.style.display = 'flex';
+            signupPanel.style.display = 'none';
+            loginForm.style.display = 'flex';
+            signupForm.style.display = 'none';
+        }
+
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Validation
+            if (!email || !password) {
+                showMessage('loginMessage', 'Please fill in all fields', 'error');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('loginMessage', 'Password must be at least 6 characters', 'error');
+                return;
+            }
+
+            // Save to localStorage for demo
+            localStorage.setItem('userEmail', email);
+            if (rememberMe) {
+                localStorage.setItem('rememberedEmail', email);
+            }
+
+            showMessage('loginMessage', 'Login successful! Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+
+        // Handle signup
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const phone = document.getElementById('signupPhone').value;
+            const address = document.getElementById('signupAddress').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const userType = document.getElementById('signupUserType').value;
+
+            // Validation
+            if (!name || !email || !phone || !address || !password || !confirmPassword || !userType) {
+                showMessage('signupMessage', 'Please fill in all fields', 'error');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('signupMessage', 'Password must be at least 6 characters', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showMessage('signupMessage', 'Passwords do not match', 'error');
+                return;
+            }
+
+            // Save user data to localStorage for demo
+            const userData = {
+                name: name,
+                email: email,
+                phone: phone,
+                address: address,
+                userType: userType,
+                registeredAt: new Date().toLocaleString()
+            };
+
+            localStorage.setItem('user_' + email, JSON.stringify(userData));
+            localStorage.setItem('userEmail', email);
+
+            showMessage('signupMessage', 'Account created successfully! Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+
+        // Show message
+        function showMessage(elementId, message, type) {
+            const messageElement = document.getElementById(elementId);
+            messageElement.innerHTML = `<div class="${type}-message">${message}</div>`;
+            
+            // Auto-hide error/success messages after 5 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    messageElement.innerHTML = '';
+                }, 5000);
+            }
+        }
+
+        // Setup theme toggle
+        function setupThemeToggle() {
+            const themeButton = document.getElementById('themeToggle');
+            if (themeButton) {
+                themeButton.addEventListener('click', toggleTheme);
+            }
+        }
+
+        // Initialize theme
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+        }
+
+        // Set theme
+        function setTheme(theme) {
+            const html = document.documentElement;
+            
+            if (theme === 'dark') {
+                html.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+                updateThemeButton('☀️ Light');
+            } else {
+                html.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+                updateThemeButton('🌙 Dark');
+            }
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        // Update theme button
+        function updateThemeButton(text) {
+            const themeButton = document.getElementById('themeToggle');
+            if (themeButton) {
+                themeButton.textContent = text;
+            }
+        }
+    </script>
 </body>
 </html>

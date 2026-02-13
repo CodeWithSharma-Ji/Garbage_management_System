@@ -26,6 +26,410 @@
         </div>
     </nav>
 
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="content">
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Book Garbage Vehicle</h1>
+                <p>Schedule a door-to-door garbage collection at your convenient date and time.</p>
+            </div>
+        </section>
+
+        <!-- ===== BOOKING FORM SECTION ===== -->
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <h2 class="section-title">Schedule Your Garbage Collection</h2>
+                    
+                    <div class="form-section">
+                        <!-- Success Message -->
+                        <div id="book-form"></div>
+
+                        <form id="bookVehicleForm">
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="bookName">Full Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="bookName" 
+                                    name="bookName"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Address Field -->
+                            <div class="form-group">
+                                <label for="bookAddress">Complete Address *</label>
+                                <input 
+                                    type="text" 
+                                    id="bookAddress" 
+                                    name="bookAddress"
+                                    placeholder="e.g., 123 Main Street, Apt 4B, City, State, ZIP"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Date Field -->
+                            <div class="form-group">
+                                <label for="bookDate">Preferred Date *</label>
+                                <input 
+                                    type="date" 
+                                    id="bookDate" 
+                                    name="bookDate"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Time Field -->
+                            <div class="form-group">
+                                <label for="bookTime">Preferred Time *</label>
+                                <input 
+                                    type="time" 
+                                    id="bookTime" 
+                                    name="bookTime"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Garbage Type Field -->
+                            <div class="form-group">
+                                <label for="garbageType">Type of Garbage *</label>
+                                <select id="garbageType" name="garbageType" required>
+                                    <option value="">-- Select Garbage Type --</option>
+                                    <option value="dry">Dry (Paper, plastic, metal, glass)</option>
+                                    <option value="wet">Wet (Food waste, organic matter)</option>
+                                    <option value="mixed">Mixed (Both dry and wet waste)</option>
+                                </select>
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Phone Field -->
+                            <div class="form-group">
+                                <label for="bookPhone">Phone Number (Optional)</label>
+                                <input 
+                                    type="tel" 
+                                    id="bookPhone" 
+                                    name="bookPhone"
+                                    placeholder="Your contact number"
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Special Instructions Field -->
+                            <div class="form-group">
+                                <label for="bookInstructions">Special Instructions (Optional)</label>
+                                <textarea 
+                                    id="bookInstructions" 
+                                    name="bookInstructions"
+                                    placeholder="Any specific instructions? (e.g., bulky items, specific location, parking instructions, etc.)"
+                                ></textarea>
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Terms Checkbox -->
+                            <div class="form-group" style="flex-direction: row; align-items: center;">
+                                <input 
+                                    type="checkbox" 
+                                    id="bookTerms" 
+                                    name="bookTerms"
+                                    required
+                                    style="margin-right: 0.5rem;"
+                                >
+                                <label for="bookTerms" style="margin-bottom: 0;">
+                                    I agree to the terms and conditions *
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                🚚 Book Garbage Vehicle
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="info-section" style="margin-top: 3rem;">
+                        <div class="info-box">
+                            <h4>📍 Address Details</h4>
+                            <p>Provide complete address including building number, apartment/house number, 
+                            street, and locality. This helps our team locate you quickly.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>🕐 Booking Window</h4>
+                            <p>You can book collection for any future date and time. Our vehicles typically 
+                            arrive within 30-45 minutes of the scheduled time window.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>💰 Pricing</h4>
+                            <p>Standard booking: ₹200 per collection. Bulk bookings and monthly subscriptions 
+                            qualify for special discounts. Contact us for details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PREMIUM MEMBERSHIP SECTION ===== -->
+        <section class="section" style="background-color: var(--light-blue);">
+            <div class="container">
+                <h2 class="section-title" data-en="Premium Membership Plans">Premium Membership Plans</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-color);" data-en="Subscribe to our premium plans and enjoy unlimited garbage collection with exclusive benefits and heavy discounts!">
+                    Subscribe to our premium plans and enjoy unlimited garbage collection with exclusive benefits and heavy discounts!
+                </p>
+                
+                <div class="cards-grid" style="max-width: 1200px; margin: 0 auto;">
+                    <!-- Monthly Plan -->
+                    <div class="card" style="border: 2px solid var(--primary-color); position: relative;">
+                        <div style="position: absolute; top: -12px; right: 20px; background-color: var(--primary-color); color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold;" data-en="STARTER">STARTER</div>
+                        <h3 data-en="Monthly Plan">Monthly Plan</h3>
+                        <h2 style="color: var(--primary-color); font-size: 2.5rem; margin: 1rem 0;">₹699/mo</h2>
+                        <p data-en="Per month - No discount">Per month - No discount</p>
+                        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #ddd;">
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                            <li style="margin-bottom: 0.8rem;">✅ 4 garbage pickups per month</li>
+                            <li style="margin-bottom: 0.8rem;">✅ Free scheduling anytime</li>
+                            <li style="margin-bottom: 0.8rem;">✅ 24/7 customer support</li>
+                            <li style="margin-bottom: 0.8rem;">✅ 10% discount on additional services</li>
+                            <li style="margin-bottom: 0.8rem;">❌ Priority pickup not included</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Subscribe Now</button>
+                    </div>
+
+                    <!-- 3-Month Plan -->
+                    <div class="card" style="border: 3px solid var(--light-green); position: relative; transform: scale(1.05);">
+                        <div style="position: absolute; top: -12px; right: 20px; background-color: var(--light-green); color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold;" data-en="POPULAR">POPULAR</div>
+                        <h3 data-en="Quarterly Plan">Quarterly Plan</h3>
+                        <h2 style="color: var(--light-green); font-size: 2.5rem; margin: 1rem 0;">₹1,899</h2>
+                        <p data-en="3 months - Save ₹210 (10% OFF)"><span style="color: var(--light-green); font-weight: bold;">Save ₹210 (10% OFF)</span></p>
+                        <p style="font-size: 0.85rem; color: #666;" data-en="₹633 per month">₹633 per month</p>
+                        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #ddd;">
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                            <li style="margin-bottom: 0.8rem;">✅ 12 garbage pickups</li>
+                            <li style="margin-bottom: 0.8rem;">✅ Free scheduling anytime</li>
+                            <li style="margin-bottom: 0.8rem;">✅ 24/7 priority support</li>
+                            <li style="margin-bottom: 0.8rem;">✅ 15% discount on additional services</li>
+                            <li style="margin-bottom: 0.8rem;">✅ Free junk removal (1 time)</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; background-color:rgb(78, 78, 248)">Subscribe Now</button>
+                    </div>
+
+                    <!-- 6-Month Plan -->
+                    <div class="card" style="border: 2px solid #FF6B6B; position: relative;">
+                        <div style="position: absolute; top: -12px; right: 20px; background-color: #FF6B6B; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold;" data-en="BEST VALUE">BEST VALUE</div>
+                        <h3 data-en="Semi-Annual Plan">Semi-Annual Plan</h3>
+                        <h2 style="color: #FF6B6B; font-size: 2.5rem; margin: 1rem 0;">₹3,479</h2>
+                        <p data-en="6 months - Save ₹721 (17% OFF)"><span style="color: #FF6B6B; font-weight: bold;">Save ₹721 (17% OFF)</span></p>
+                        <p style="font-size: 0.85rem; color: #666;" data-en="₹580 per month">₹580 per month</p>
+                        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #ddd;">
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                            <li style="margin-bottom: 0.8rem;">✅ 24 garbage pickups</li>
+                            <li style="margin-bottom: 0.8rem;">✅ Free scheduling anytime</li>
+                            <li style="margin-bottom: 0.8rem;">✅ VIP 24/7 priority support</li>
+                            <li style="margin-bottom: 0.8rem;">✅ 20% discount on all services</li>
+                            <li style="margin-bottom: 0.8rem;">✅ Free junk removal (2 times)</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; background-color: #FF6B6B;">Subscribe Now</button>
+                    </div>
+
+                    <!-- Annual Plan -->
+                    <div class="card" style="border: 2px solid #FFD93D; position: relative;">
+                        <div style="position: absolute; top: -12px; right: 20px; background-color: #FFD93D; color: #333; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold;" data-en="PREMIUM">PREMIUM</div>
+                        <h3 data-en="Annual Plan">Annual Plan</h3>
+                        <h2 style="color: #FFD93D; font-size: 2.5rem; margin: 1rem 0;">₹6,299</h2>
+                        <p data-en="12 months - Save ₹1,801 (22% OFF)"><span style="color: #FFD93D; font-weight: bold;">Save ₹1,801 (22% OFF)</span></p>
+                        <p style="font-size: 0.85rem; color: #666;" data-en="₹525 per month">₹525 per month</p>
+                        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #ddd;">
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                            <li style="margin-bottom: 0.8rem;">✅ 48 unlimited pickups</li>
+                            <li style="margin-bottom: 0.8rem;">✅ Free scheduling anytime</li>
+                            <li style="margin-bottom: 0.8rem;">✅ VIP 24/7 priority support</li>
+                            <li style="margin-bottom: 0.8rem;">✅ 25% discount on all services</li>
+                            <li style="margin-bottom: 0.8rem;">✅ Free junk removal (4 times)</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; background-color: #FFD93D; color: #333;">Subscribe Now</button>
+                    </div>
+                </div>
+
+                <!-- Membership Benefits -->
+                <div style="margin-top: 3rem; background-color: rgba(255,255,255,0.5); padding: 2rem; border-radius: 10px;">
+                    <h3 style="text-align: center; margin-bottom: 2rem;" data-en="Why Choose Premium Membership?">Why Choose Premium Membership?</h3>
+                    <div class="cards-grid">
+                        <div style="padding: 1rem;">
+                            <h4 data-en="💰 Save Money">💰 Save Money</h4>
+                            <p data-en="Save up to 22% with annual plans. More you commit, more you save!">Save up to 22% with annual plans. More you commit, more you save!</p>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h4 data-en="📅 Unlimited Flexibility">📅 Unlimited Flexibility</h4>
+                            <p data-en="Schedule pickups anytime without extra charges. Complete control over your schedule.">Schedule pickups anytime without extra charges. Complete control over your schedule.</p>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h4 data-en="⭐ Priority Service">⭐ Priority Service</h4>
+                            <p data-en="Get priority pickup slots and faster response times. VIP customer support always ready.">Get priority pickup slots and faster response times. VIP customer support always ready.</p>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h4 data-en="🎁 Exclusive Perks">🎁 Exclusive Perks</h4>
+                            <p data-en="Free junk removal, bulk waste handling, and special discounts on organic fertilizers.">Free junk removal, bulk waste handling, and special discounts on organic fertilizers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BENEFITS SECTION ===== -->
+        <section class="section" style="background-color: var(--light-green);">
+            <div class="container">
+                <h2 class="section-title">Benefits of Booking With Us</h2>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">📱</div>
+                        <h3>Easy Scheduling</h3>
+                        <p>Schedule garbage collection at your convenience. Choose date and time that works 
+                        best for your routine and lifestyle.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">⏰</div>
+                        <h3>Reliable Timing</h3>
+                        <p>Get notifications with exact arrival time. Our professional teams are committed 
+                        to punctuality and reliable service delivery.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🌟</div>
+                        <h3>Professional Service</h3>
+                        <p>Trained crew members handle your garbage with care and respect. Clean, courteous, 
+                        and efficient service every time.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h3>Regular Bookings</h3>
+                        <p>Set up recurring weekly, bi-weekly, or monthly collections. Auto-bookings ensure 
+                        you never run out of collection slots.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">♻️</div>
+                        <h3>Eco-Friendly</h3>
+                        <p>Your waste is disposed responsibly. We ensure proper segregation and recycling 
+                        of materials to minimize environmental impact.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">💯</div>
+                        <h3>Satisfaction Guarantee</h3>
+                        <p>Not satisfied? We offer refund or re-booking options. Your satisfaction is our 
+                        top priority and we stand behind our service quality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Booking FAQs</h2>
+                
+                <div class="info-section">
+                    <div class="info-box">
+                        <h4>How much does it cost?</h4>
+                        <p>Standard single booking is ₹200. Monthly subscriptions (4 collections) cost ₹700 
+                        (saves ₹100). Commercial properties have custom pricing based on volume.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Can I cancel or reschedule?</h4>
+                        <p>Yes! Cancel or reschedule up to 2 hours before scheduled time without charges. 
+                        Cancellations within 2 hours are charged 50% of booking amount.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>What if the vehicle is late?</h4>
+                        <p>We're committed to punctuality but unexpected delays can happen. If we're over 
+                        30 minutes late, we'll provide a 20% discount on your next booking.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Do you handle all types of garbage?</h4>
+                        <p>We handle dry, wet, and mixed waste. For hazardous, medical, or special waste, 
+                        please contact us directly on our helpline.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Is there a limit on garbage quantity?</h4>
+                        <p>Standard bookings cover regular household waste. For bulk waste (construction, 
+                        renovation), request special pickup or rent a container from us.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>How do I pay?</h4>
+                        <p>We accept cash, online payments (UPI, cards, net banking), and wallets. 
+                        Subscriptions can be paid monthly or quarterly with auto-debit facility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BOOKING PROCESS ===== -->
+        <section class="section" style="background-color: var(--light-blue);">
+            <div class="container">
+                <h2 class="section-title">Simple Booking Process</h2>
+                
+                <div class="cards-grid">
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-green) 0%, var(--light-blue) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">1️⃣</div>
+                        <h3>Fill the Form</h3>
+                        <p>Enter your details, preferred date, time, and garbage type. Provide accurate 
+                        address for quick location by our team.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">2️⃣</div>
+                        <h3>Confirm & Pay</h3>
+                        <p>Review booking details, select payment method, and complete the transaction. 
+                        You'll get instant order confirmation.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-green) 0%, var(--light-blue) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">3️⃣</div>
+                        <h3>Get Notification</h3>
+                        <p>Receive SMS/email with booking details and vehicle arrival estimate. Track 
+                        vehicle location on your mobile app.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">4️⃣</div>
+                        <h3>Service Complete</h3>
+                        <p>Our crew arrives, collects garbage, and provides receipt. Rate your experience 
+                        and help us improve. Simple and clean!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA SECTION ===== -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Book Your Garbage Collection Today</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                    Schedule convenient, professional garbage collection for your home or business. 
+                    Quick, reliable, and eco-friendly.
+                </p>
+                
+                <a href="#bookVehicleForm" class="btn btn-primary">Book Now</a>
+                <a href="contact.html" class="btn btn-secondary" style="margin-left: 1rem;">Have Questions?</a>
+            </div>
+        </section>
+    </div>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
