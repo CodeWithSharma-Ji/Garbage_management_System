@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Vehicle</title>
+    <link rel="stylesheet" href="./Styles/style.css">
+</head>
+<body>
+     <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">Eco System</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active" data-en="Home">Home</a></li>
+                <li><a href="about.html" data-en="About">About</a></li>
+                <li><a href="services.html" data-en="Services">Services</a></li>
+                <li><a href="report.html" data-en="Report">Report</a></li>
+                <li><a href="book.html" data-en="Book Vehicle">Book Vehicle</a></li>
+                <li><a href="fertilizer.html" data-en="Buy Fertilizer">Buy Fertilizer</a></li>
+                <li><a href="contact.html" data-en="Contact">Contact</a></li>
+            </ul>
+            <div class="navbar-controls">
+                <a href="auth.html" class="Login-btn">Login / Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="content">
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Book Garbage Vehicle</h1>
+                <p>Schedule a door-to-door garbage collection at your convenient date and time.</p>
+            </div>
+        </section>
+
+        <!-- ===== BOOKING FORM SECTION ===== -->
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <h2 class="section-title">Schedule Your Garbage Collection</h2>
+                    
+                    <div class="form-section">
+                        <!-- Success Message -->
+                        <div id="book-form"></div>
+
+                        <form id="bookVehicleForm">
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="bookName">Full Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="bookName" 
+                                    name="bookName"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Address Field -->
+                            <div class="form-group">
+                                <label for="bookAddress">Complete Address *</label>
+                                <input 
+                                    type="text" 
+                                    id="bookAddress" 
+                                    name="bookAddress"
+                                    placeholder="e.g., 123 Main Street, Apt 4B, City, State, ZIP"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Date Field -->
+                            <div class="form-group">
+                                <label for="bookDate">Preferred Date *</label>
+                                <input 
+                                    type="date" 
+                                    id="bookDate" 
+                                    name="bookDate"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Time Field -->
+                            <div class="form-group">
+                                <label for="bookTime">Preferred Time *</label>
+                                <input 
+                                    type="time" 
+                                    id="bookTime" 
+                                    name="bookTime"
+                                    required
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Garbage Type Field -->
+                            <div class="form-group">
+                                <label for="garbageType">Type of Garbage *</label>
+                                <select id="garbageType" name="garbageType" required>
+                                    <option value="">-- Select Garbage Type --</option>
+                                    <option value="dry">Dry (Paper, plastic, metal, glass)</option>
+                                    <option value="wet">Wet (Food waste, organic matter)</option>
+                                    <option value="mixed">Mixed (Both dry and wet waste)</option>
+                                </select>
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Phone Field -->
+                            <div class="form-group">
+                                <label for="bookPhone">Phone Number (Optional)</label>
+                                <input 
+                                    type="tel" 
+                                    id="bookPhone" 
+                                    name="bookPhone"
+                                    placeholder="Your contact number"
+                                >
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Special Instructions Field -->
+                            <div class="form-group">
+                                <label for="bookInstructions">Special Instructions (Optional)</label>
+                                <textarea 
+                                    id="bookInstructions" 
+                                    name="bookInstructions"
+                                    placeholder="Any specific instructions? (e.g., bulky items, specific location, parking instructions, etc.)"
+                                ></textarea>
+                                <span class="error"></span>
+                            </div>
+
+                            <!-- Terms Checkbox -->
+                            <div class="form-group" style="flex-direction: row; align-items: center;">
+                                <input 
+                                    type="checkbox" 
+                                    id="bookTerms" 
+                                    name="bookTerms"
+                                    required
+                                    style="margin-right: 0.5rem;"
+                                >
+                                <label for="bookTerms" style="margin-bottom: 0;">
+                                    I agree to the terms and conditions *
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                🚚 Book Garbage Vehicle
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="info-section" style="margin-top: 3rem;">
+                        <div class="info-box">
+                            <h4>📍 Address Details</h4>
+                            <p>Provide complete address including building number, apartment/house number, 
+                            street, and locality. This helps our team locate you quickly.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>🕐 Booking Window</h4>
+                            <p>You can book collection for any future date and time. Our vehicles typically 
+                            arrive within 30-45 minutes of the scheduled time window.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>💰 Pricing</h4>
+                            <p>Standard booking: ₹200 per collection. Bulk bookings and monthly subscriptions 
+                            qualify for special discounts. Contact us for details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BENEFITS SECTION ===== -->
+        <section class="section" style="background-color: var(--light-green);">
+            <div class="container">
+                <h2 class="section-title">Benefits of Booking With Us</h2>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">📱</div>
+                        <h3>Easy Scheduling</h3>
+                        <p>Schedule garbage collection at your convenience. Choose date and time that works 
+                        best for your routine and lifestyle.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">⏰</div>
+                        <h3>Reliable Timing</h3>
+                        <p>Get notifications with exact arrival time. Our professional teams are committed 
+                        to punctuality and reliable service delivery.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🌟</div>
+                        <h3>Professional Service</h3>
+                        <p>Trained crew members handle your garbage with care and respect. Clean, courteous, 
+                        and efficient service every time.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h3>Regular Bookings</h3>
+                        <p>Set up recurring weekly, bi-weekly, or monthly collections. Auto-bookings ensure 
+                        you never run out of collection slots.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">♻️</div>
+                        <h3>Eco-Friendly</h3>
+                        <p>Your waste is disposed responsibly. We ensure proper segregation and recycling 
+                        of materials to minimize environmental impact.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">💯</div>
+                        <h3>Satisfaction Guarantee</h3>
+                        <p>Not satisfied? We offer refund or re-booking options. Your satisfaction is our 
+                        top priority and we stand behind our service quality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Booking FAQs</h2>
+                
+                <div class="info-section">
+                    <div class="info-box">
+                        <h4>How much does it cost?</h4>
+                        <p>Standard single booking is ₹200. Monthly subscriptions (4 collections) cost ₹700 
+                        (saves ₹100). Commercial properties have custom pricing based on volume.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Can I cancel or reschedule?</h4>
+                        <p>Yes! Cancel or reschedule up to 2 hours before scheduled time without charges. 
+                        Cancellations within 2 hours are charged 50% of booking amount.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>What if the vehicle is late?</h4>
+                        <p>We're committed to punctuality but unexpected delays can happen. If we're over 
+                        30 minutes late, we'll provide a 20% discount on your next booking.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Do you handle all types of garbage?</h4>
+                        <p>We handle dry, wet, and mixed waste. For hazardous, medical, or special waste, 
+                        please contact us directly on our helpline.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Is there a limit on garbage quantity?</h4>
+                        <p>Standard bookings cover regular household waste. For bulk waste (construction, 
+                        renovation), request special pickup or rent a container from us.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>How do I pay?</h4>
+                        <p>We accept cash, online payments (UPI, cards, net banking), and wallets. 
+                        Subscriptions can be paid monthly or quarterly with auto-debit facility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BOOKING PROCESS ===== -->
+        <section class="section" style="background-color: var(--light-blue);">
+            <div class="container">
+                <h2 class="section-title">Simple Booking Process</h2>
+                
+                <div class="cards-grid">
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-green) 0%, var(--light-blue) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">1️⃣</div>
+                        <h3>Fill the Form</h3>
+                        <p>Enter your details, preferred date, time, and garbage type. Provide accurate 
+                        address for quick location by our team.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">2️⃣</div>
+                        <h3>Confirm & Pay</h3>
+                        <p>Review booking details, select payment method, and complete the transaction. 
+                        You'll get instant order confirmation.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-green) 0%, var(--light-blue) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">3️⃣</div>
+                        <h3>Get Notification</h3>
+                        <p>Receive SMS/email with booking details and vehicle arrival estimate. Track 
+                        vehicle location on your mobile app.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);">
+                        <div class="card-icon" style="font-size: 2.5rem;">4️⃣</div>
+                        <h3>Service Complete</h3>
+                        <p>Our crew arrives, collects garbage, and provides receipt. Rate your experience 
+                        and help us improve. Simple and clean!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA SECTION ===== -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Book Your Garbage Collection Today</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                    Schedule convenient, professional garbage collection for your home or business. 
+                    Quick, reliable, and eco-friendly.
+                </p>
+                
+                <a href="#bookVehicleForm" class="btn btn-primary">Book Now</a>
+                <a href="contact.html" class="btn btn-secondary" style="margin-left: 1rem;">Have Questions?</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h4>Eco Management System</h4>
+            <p>Smart Garbage Management for Sustainable Cities</p>
+            
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="fertilizer.html">Organic Fertilizer</a>
+                <a href="contact.html">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+
+            <p>
+                &copy; 2026 Eco Management System. All rights reserved. | 
+                <span style="color: var(--light-green);">♻️ Building a cleaner future</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="./JavaScript/script.js"></script>
+</body>
+</html>
