@@ -3,11 +3,506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Sign Up</title>
+    <title>Authentication - Book Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Styles/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #0f640f;
+            --dark-green: #17ba05;
+            --cream: #18dba4b1;
+            --beige: #bf7d0c;
+            --light-beige: #f9f6f0;
+            --text-dark: #14110c;
+            --text-light: #121312;
+            --shadow: rgba(8, 91, 180, 0.2);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+           background-color:#1da656;
+            
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            perspective: 2000px;
+        }
+
+        .book-container {
+            position: relative;
+            width: 900px;
+            max-width: 100vw;
+            height: 500px;
+            transform-style: preserve-3d;
+        }
+
+        .book {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .book.flipped {
+            transform: rotateY(-180deg);
+        }
+
+        .page {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: var(--cream);
+            box-shadow: 
+                0 15px 50px var(--shadow),
+                inset 0 0 50px rgba(139, 125, 107, 0.1);
+            backface-visibility: hidden;
+            border-radius: 0 8px 8px 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Hide pages when flipped */
+        .book:not(.flipped) .page-back {
+            visibility: hidden;
+            opacity: 0;
+            display: none;
+        }
+
+        .book.flipped .page-left {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .book.flipped .page-back {
+            visibility: visible;
+            opacity: 1;
+            display: flex;
+        }
+
+        /* Show/hide login content vs welcome message */
+        .login-content {
+            display: block;
+        }
+
+        .welcome-message {
+            display: none;
+        }
+
+        .book.flipped .login-content {
+            display: none;
+        }
+
+        .book.flipped .welcome-message {
+            display: block;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 125, 107, 0.03) 2px,
+                    rgba(139, 125, 107, 0.03) 4px
+                );
+            pointer-events: none;
+        }
+
+        .page-left {
+            right: 50%;
+            border-radius: 8px 0 0 8px;
+            border-right: 2px solid var(--beige);
+            display: flex;
+        }
+
+        .page-right {
+            left: 50%;
+            transform-origin: left center;
+            transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: 2;
+            display: flex;
+        }
+
+        .book.flipped .page-right {
+            transform: rotateY(-180deg);
+        }
+
+        .book:not(.flipped) .page-right {
+            z-index: 5;
+            display: flex;
+        }
+
+        .page-content {
+            padding: 2px 50px 40px 50px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .page-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .page-content::-webkit-scrollbar-track {
+            background: var(--beige);
+            border-radius: 10px;
+        }
+
+        .page-content::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 10px;
+        }
+
+        .page-content::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-green);
+        }
+
+        .page-back {
+            position: absolute;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            background: var(--cream);
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 
+                0 15px 50px var(--shadow),
+                inset 0 0 50px rgba(139, 125, 107, 0.1);
+            z-index: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book.flipped .page-back {
+            z-index: 10;
+        }
+
+        .page-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 125, 107, 0.03) 2px,
+                    rgba(139, 125, 107, 0.03) 4px
+                );
+            pointer-events: none;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .form-group:nth-child(2) { animation-delay: 0.1s; }
+        .form-group:nth-child(3) { animation-delay: 0.2s; }
+        .form-group:nth-child(4) { animation-delay: 0.3s; }
+        .form-group:nth-child(5) { animation-delay: 0.4s; }
+        .form-group:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1.5px solid var(--beige);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light-beige);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(107, 142, 78, 0.1);
+        }
+
+        input::placeholder {
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-green);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-size: 0.88rem;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(107, 142, 78, 0.3);
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 142, 78, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            color: var(--dark-green);
+            text-decoration: underline;
+        }
+
+        .switch-form {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .switch-link {
+            color: var(--primary-green);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .switch-link:hover {
+            color: var(--dark-green);
+            text-decoration: underline;
+        }
+
+        .spine {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(to right, 
+                var(--beige), 
+                var(--cream), 
+                var(--beige)
+            );
+            transform: translateX(-50%);
+            box-shadow: 
+                inset 2px 0 5px rgba(0, 0, 0, 0.1),
+                inset -2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .book-title {
+            position: relative;
+            padding: 20px 50px;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            opacity: 0.4;
+            letter-spacing: 2px;
+            background: var(--cream);
+            border-bottom: 1px solid rgba(107, 142, 78, 0.1);
+            flex-shrink: 0;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b8e4e' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                perspective: none;
+            }
+
+            .book-container {
+                height: auto;
+                min-height: 600px;
+            }
+
+            .book {
+                transform: none !important;
+            }
+
+            .page {
+                width: 100%;
+                border-radius: 8px;
+                display: flex;
+            }
+
+            .page-left {
+                display: none;
+            }
+
+            .page-right {
+                position: relative;
+                left: 0;
+                border-radius: 8px;
+                transform: none !important;
+                display: flex;
+            }
+
+            .page-back {
+                position: relative;
+                left: 0;
+                width: 100%;
+                border-radius: 8px;
+                transform: none !important;
+                display: flex;
+            }
+
+            /* Mobile: Show only login by default */
+            .book:not(.flipped) .page-right {
+                display: block;
+            }
+
+            .book:not(.flipped) .page-back {
+                display: none;
+                visibility: hidden;
+            }
+
+            /* Mobile: Show only signup when flipped */
+            .book.flipped .page-right {
+                display: none;
+                visibility: hidden;
+            }
+
+            .book.flipped .page-back {
+                display: block;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .spine {
+                display: none;
+            }
+
+            .page-content {
+                padding: 20px 30px 40px 30px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .book-title {
+                padding: 20px 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-     <!-- ===== NAVIGATION BAR ===== -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-brand">Eco System</div>
@@ -25,375 +520,210 @@
             </div>
         </div>
     </nav>
-
-    <!-- ===== AUTH CONTAINER ===== -->
-    <div class="auth-container">
-        <div class="book-container auth-wrapper" id="authWrapper">
-            <!-- LEFT PANEL - LOGIN BY DEFAULT -->
-            <div class="auth-panel auth-left-panel book-left-page" id="loginPanel">
-                <h2>Welcome Back!</h2>
-                <p>Sign in to your account to book garbage collection, buy fertilizer, and manage your eco journey.</p>
-                <button class="auth-toggle-btn" onclick="switchToSignup()">Create Account</button>
+    
+    <div class="book-container">
+        <div class="book" id="book">
+            <div class="spine"></div>
+            
+            <!-- Left Page (Static - Welcome) -->
+            <div class="page page-left">
+                <div class="book-title">AUTHENTICATION</div>
+                <div class="page-content">
+                    <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Welcome</h1>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); font-family: 'Crimson Text', serif;">
+                        Begin your sustainable journey with us. Whether you're a returning friend or joining our community for the first time, we're here to help you make a positive impact on our planet.
+                    </p>
+                    <div style="margin-top: 40px; padding: 20px; background: var(--light-beige); border-radius: 8px; border-left: 4px solid var(--primary-green);">
+                        <p style="font-size: 0.95rem; color: var(--text-light); line-height: 1.6;">
+                            <strong style="color: var(--primary-green);">Smart Garbage Management</strong><br>
+                            Building a cleaner, greener future together.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <!-- RIGHT PANEL - SIGNUP BY DEFAULT -->
-            <div class="auth-panel auth-right-panel book-right-page" id="signupPanel">
-                <h2>New Here?</h2>
-                <p>Join our community and start your sustainable journey with us today!</p>
-                <button class="auth-toggle-btn" onclick="switchToLogin()">Sign In</button>
+            <!-- Right Page (Login Form) -->
+            <div class="page page-right">
+                <div class="book-title">LOGIN</div>
+                <div class="page-content">
+                    <div class="login-content">
+                        <h1>Sign In</h1>
+                        <p class="subtitle">Welcome back! Sign in to continue your journey</p>
+                        
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="loginEmail">Email Address *</label>
+                                <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loginPassword">Password *</label>
+                                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="rememberMe">
+                                <label for="rememberMe">Remember Me</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+
+                            <div class="switch-form">
+                                Don't have an account? 
+                                <a class="switch-link" onclick="toggleBook()">Sign Up</a>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Attractive content shown when sign up is active -->
+                    <div class="welcome-message">
+                        <h1 style="font-size: 3rem; margin-bottom: 25px; color: var(--primary-green);">🌱 Join Our Green Community</h1>
+                        <p style="font-size: 1.15rem; line-height: 1.9; color: var(--text-dark); margin-bottom: 25px;">
+                            <strong>Create your account today</strong> and become part of a growing movement towards sustainable waste management and environmental responsibility.
+                        </p>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(107, 142, 78, 0.1), rgba(107, 142, 78, 0.05)); padding: 25px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid var(--primary-green);">
+                            <h3 style="color: var(--primary-green); margin-bottom: 15px; font-size: 1.3rem;">✨ What You'll Get:</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="padding: 10px 0; color: var(--text-dark); font-size: 1rem;">
+                                    <strong style="color: var(--primary-green);">♻️</strong> Smart waste tracking and management
+                                </li>
+                                <li style="padding: 10px 0; color: var(--text-dark); font-size: 1rem;">
+                                    <strong style="color: var(--primary-green);">📊</strong> Real-time environmental impact analytics
+                                </li>
+                                <li style="padding: 10px 0; color: var(--text-dark); font-size: 1rem;">
+                                    <strong style="color: var(--primary-green);">🏆</strong> Rewards for sustainable practices
+                                </li>
+                                <li style="padding: 10px 0; color: var(--text-dark); font-size: 1rem;">
+                                    <strong style="color: var(--primary-green);">🌍</strong> Connect with eco-conscious community
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: var(--light-beige); padding: 20px; border-radius: 10px; text-align: center;">
+                            <p style="font-size: 1.05rem; color: var(--text-light); margin: 0; font-style: italic;">
+                                "Together, we've diverted <strong style="color: var(--primary-green);">2.5 million tons</strong> of waste from landfills!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- LOGIN FORM -->
-            <div class="auth-panel book-right-page" id="loginForm">
-                <form class="auth-form" onsubmit="handleLogin(event)">
-                    <h3>Sign In</h3>
-                    <p>Welcome to Eco Management System</p>
+            <!-- Back of Right Page (Sign Up Form) -->
+            <div class="page-back">
+                <div class="book-title">SIGN UP</div>
+                <div class="page-content">
+                    <h1>Create Account</h1>
+                    <p class="subtitle">Join us and start your sustainable journey</p>
+                    
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signupEmail">Email Address *</label>
+                            <input type="email" id="signupEmail" placeholder="your@email.com" required>
+                        </div>
 
-                    <div id="loginMessage"></div>
+                        <div class="form-group">
+                            <label for="signupPhone">Phone Number *</label>
+                            <input type="tel" id="signupPhone" placeholder="+91 98765 43210" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="loginEmail">Email Address *</label>
-                        <input 
-                            type="email" 
-                            id="loginEmail" 
-                            name="loginEmail"
-                            placeholder="your@email.com"
-                            required
-                        >
-                    </div>
+                        <div class="form-group">
+                            <label for="signupAddress">Address *</label>
+                            <input type="text" id="signupAddress" placeholder="123 Main Street, City" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="loginPassword">Password *</label>
-                        <input 
-                            type="password" 
-                            id="loginPassword" 
-                            name="loginPassword"
-                            placeholder="Enter your password"
-                            required
-                        >
-                    </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password *</label>
+                            <input type="password" id="signupPassword" placeholder="Create a strong password" required>
+                        </div>
 
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="rememberMe" name="rememberMe">
-                        <label for="rememberMe" style="margin-bottom: 0;">Remember me</label>
-                    </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password *</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                        </div>
 
-                    <button type="submit" class="auth-submit-btn">Sign In</button>
+                        <div class="form-group">
+                            <label for="accountType">Account Type *</label>
+                            <select id="accountType" required>
+                                <option value="">-- Select Account Type --</option>
+                                <option value="individual">Individual</option>
+                                <option value="business">Business</option>
+                                <option value="organization">Organization</option>
+                            </select>
+                        </div>
 
-                    <div class="auth-link">
-                        <p>Don't have an account? <a href="#" onclick="switchToSignup(); return false;">Sign Up</a></p>
-                        <p><a href="#">Forgot Password?</a></p>
-                    </div>
-                </form>
-            </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <label for="agreeTerms">I agree to Terms & Conditions</label>
+                        </div>
 
-            <!-- SIGNUP FORM -->
-            <div class="auth-panel book-right-page" id="signupForm" style="display: none;">
-                <form class="auth-form" onsubmit="handleSignup(event)">
-                    <h3>Create Account</h3>
-                    <p>Join our eco community today</p>
+                        <button type="submit" class="btn btn-primary">Create Account</button>
 
-                    <div id="signupMessage"></div>
-
-                    <div class="form-group">
-                        <label for="signupName">Full Name *</label>
-                        <input 
-                            type="text" 
-                            id="signupName" 
-                            name="signupName"
-                            placeholder="Your full name"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signupEmail">Email Address *</label>
-                        <input 
-                            type="email" 
-                            id="signupEmail" 
-                            name="signupEmail"
-                            placeholder="your@email.com"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signupPhone">Phone Number *</label>
-                        <input 
-                            type="tel" 
-                            id="signupPhone" 
-                            name="signupPhone"
-                            placeholder="+91 98765 43210"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signupAddress">Address *</label>
-                        <input 
-                            type="text" 
-                            id="signupAddress" 
-                            name="signupAddress"
-                            placeholder="123 Main Street, City"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signupPassword">Password *</label>
-                        <input 
-                            type="password" 
-                            id="signupPassword" 
-                            name="signupPassword"
-                            placeholder="Create a strong password"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signupConfirmPassword">Confirm Password *</label>
-                        <input 
-                            type="password" 
-                            id="signupConfirmPassword" 
-                            name="signupConfirmPassword"
-                            placeholder="Confirm your password"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signupUserType">Account Type *</label>
-                        <select id="signupUserType" name="signupUserType" required>
-                            <option value="">-- Select Account Type --</option>
-                            <option value="household">Household User</option>
-                            <option value="business">Business/Commercial</option>
-                            <option value="farmer">Farmer</option>
-                            <option value="seller">Fertilizer Seller</option>
-                        </select>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                        <label for="agreeTerms" style="margin-bottom: 0;">I agree to <a href="#" style="color: var(--primary-green);">Terms & Conditions</a></label>
-                    </div>
-
-                    <button type="submit" class="auth-submit-btn">Create Account</button>
-
-                    <div class="auth-link">
-                        <p>Already have an account? <a href="#" onclick="switchToLogin(); return false;">Sign In</a></p>
-                    </div>
-                </form>
+                        <div class="switch-form">
+                            Already have an account? 
+                            <a class="switch-link" onclick="toggleBook()">Sign In</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+    
 
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="footer-content">
-            <h4>Eco Management System</h4>
-            <p>Smart Garbage Management for Sustainable Cities</p>
-            
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="services.html">Services</a>
-                <a href="fertilizer.html">Organic Fertilizer</a>
-                <a href="contact.html">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-            </div>
-
-            <p>
-                &copy; 2026 Eco Management System. All rights reserved. | 
-                <span style="color: var(--light-green);">♻️ Building a cleaner future</span>
-            </p>
-        </div>
-    </footer>
-
-    <!-- ===== SCRIPTS ===== -->
-    <script src="../JavaScript/script.js"></script>
     <script>
-        // Initialize - Show login form by default
-        document.addEventListener('DOMContentLoaded', function() {
-            showLoginForm();
-            initializeTheme();
-            setupThemeToggle();
-        });
-
-        // Switch to signup form
-        function switchToSignup() {
-            const loginPanel = document.getElementById('loginPanel');
-            const signupPanel = document.getElementById('signupPanel');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-
-            loginPanel.style.display = 'none';
-            signupPanel.style.display = 'flex';
-            loginForm.style.display = 'none';
-            signupForm.style.display = 'flex';
+        function toggleBook() {
+            const book = document.getElementById('book');
+            book.classList.toggle('flipped');
         }
 
-        // Switch to login form
-        function switchToLogin() {
-            const loginPanel = document.getElementById('loginPanel');
-            const signupPanel = document.getElementById('signupPanel');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-
-            loginPanel.style.display = 'flex';
-            signupPanel.style.display = 'none';
-            loginForm.style.display = 'flex';
-            signupForm.style.display = 'none';
-        }
-
-        // Show login form by default
-        function showLoginForm() {
-            const loginPanel = document.getElementById('loginPanel');
-            const signupPanel = document.getElementById('signupPanel');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-
-            loginPanel.style.display = 'flex';
-            signupPanel.style.display = 'none';
-            loginForm.style.display = 'flex';
-            signupForm.style.display = 'none';
-        }
-
-        // Handle login
-        function handleLogin(event) {
-            event.preventDefault();
-            
+        // Form submission handlers
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
+            const remember = document.getElementById('rememberMe').checked;
+            
+            console.log('Login submitted:', { email, password, remember });
+            alert('Login functionality would be implemented here!\n\nEmail: ' + email);
+        });
 
-            // Validation
-            if (!email || !password) {
-                showMessage('loginMessage', 'Please fill in all fields', 'error');
-                return;
-            }
-
-            if (password.length < 6) {
-                showMessage('loginMessage', 'Password must be at least 6 characters', 'error');
-                return;
-            }
-
-            // Save to localStorage for demo
-            localStorage.setItem('userEmail', email);
-            if (rememberMe) {
-                localStorage.setItem('rememberedEmail', email);
-            }
-
-            showMessage('loginMessage', 'Login successful! Redirecting...', 'success');
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 2000);
-        }
-
-        // Handle signup
-        function handleSignup(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('signupName').value;
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             const email = document.getElementById('signupEmail').value;
             const phone = document.getElementById('signupPhone').value;
             const address = document.getElementById('signupAddress').value;
             const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('signupConfirmPassword').value;
-            const userType = document.getElementById('signupUserType').value;
-
-            // Validation
-            if (!name || !email || !phone || !address || !password || !confirmPassword || !userType) {
-                showMessage('signupMessage', 'Please fill in all fields', 'error');
-                return;
-            }
-
-            if (password.length < 6) {
-                showMessage('signupMessage', 'Password must be at least 6 characters', 'error');
-                return;
-            }
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const accountType = document.getElementById('accountType').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
 
             if (password !== confirmPassword) {
-                showMessage('signupMessage', 'Passwords do not match', 'error');
+                alert('Passwords do not match!');
                 return;
             }
 
-            // Save user data to localStorage for demo
-            const userData = {
-                name: name,
-                email: email,
-                phone: phone,
-                address: address,
-                userType: userType,
-                registeredAt: new Date().toLocaleString()
-            };
-
-            localStorage.setItem('user_' + email, JSON.stringify(userData));
-            localStorage.setItem('userEmail', email);
-
-            showMessage('signupMessage', 'Account created successfully! Redirecting...', 'success');
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 2000);
-        }
-
-        // Show message
-        function showMessage(elementId, message, type) {
-            const messageElement = document.getElementById(elementId);
-            messageElement.innerHTML = `<div class="${type}-message">${message}</div>`;
+            if (!agreeTerms) {
+                alert('Please agree to Terms & Conditions');
+                return;
+            }
             
-            // Auto-hide error/success messages after 5 seconds
-            if (type === 'error') {
-                setTimeout(() => {
-                    messageElement.innerHTML = '';
-                }, 5000);
-            }
-        }
+            console.log('Sign up submitted:', { 
+                email, 
+                phone, 
+                address, 
+                password, 
+                accountType 
+            });
+            alert('Sign up functionality would be implemented here!\n\nEmail: ' + email + '\nAccount Type: ' + accountType);
+        });
 
-        // Setup theme toggle
-        function setupThemeToggle() {
-            const themeButton = document.getElementById('themeToggle');
-            if (themeButton) {
-                themeButton.addEventListener('click', toggleTheme);
-            }
-        }
-
-        // Initialize theme
-        function initializeTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            setTheme(savedTheme);
-        }
-
-        // Set theme
-        function setTheme(theme) {
-            const html = document.documentElement;
-            
-            if (theme === 'dark') {
-                html.classList.add('dark-theme');
-                localStorage.setItem('theme', 'dark');
-                updateThemeButton('☀️ Light');
-            } else {
-                html.classList.remove('dark-theme');
-                localStorage.setItem('theme', 'light');
-                updateThemeButton('🌙 Dark');
-            }
-        }
-
-        // Toggle theme
-        function toggleTheme() {
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
-        }
-
-        // Update theme button
-        function updateThemeButton(text) {
-            const themeButton = document.getElementById('themeToggle');
-            if (themeButton) {
-                themeButton.textContent = text;
-            }
-        }
+        // Forgot password handler
+        document.querySelector('.forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Password reset functionality would be implemented here!');
+        });
     </script>
 </body>
 </html>
